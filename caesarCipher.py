@@ -27,7 +27,7 @@ def getDecrypt():
 
 # Cipher Key
 def getCipherKey():
-   shiftAmount = input( "Please enter a key (whole number from 1-25): ")
+   shiftAmount = int(input( "Please enter a key (whole number from 1-25): "))
    return shiftAmount
 
 # Encrypt Message
@@ -37,7 +37,7 @@ def encryptMessage(message, cipherKey, alphabet):
     uppercaseMessage = message.upper()
     for currentCharacter in uppercaseMessage:
         position = alphabet.find(currentCharacter)
-        newPosition = position + (-1*int(cipherKey))
+        newPosition = position + (-1 * cipherKey)
         if currentCharacter in alphabet:
             encryptedMessage = encryptedMessage + alphabet[newPosition]
         else:
@@ -51,7 +51,7 @@ def decryptMessage2(message, cipherKey, alphabet):
     uppercaseMessage = message.upper()
     for char in uppercaseMessage:
         pos = alphabet.find(char)
-        newPos = pos + int(cipherKey)
+        newPos = pos + cipherKey
         if char in alphabet:
             decryptedMessage = decryptedMessage + alphabet[newPos]
         else:
@@ -67,11 +67,16 @@ def decryptMessage2(message, cipherKey, alphabet):
 def runCaesarCipherProgram():
     myAlphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     myAlphabet2 = getDoubleAlphabet(myAlphabet)
-    option = chooseEncryptOrDecrypt()
-    if option.lower() == "encrypt":
-        myMessage = getMessage()
-    elif option.lower() == "decrypt":
-        myMessage = getDecrypt()
+    myMessage = ""
+    exitLoop = False
+    while exitLoop == False:
+        option = chooseEncryptOrDecrypt()
+        if option.lower() == "encrypt":
+            myMessage = getMessage()
+            exitLoop = True
+        elif option.lower() == "decrypt":
+            myMessage = getDecrypt()
+            exitLoop = True
     myCipherKey = getCipherKey()
     if option.lower() == "encrypt":
         myEncryptedMessage = encryptMessage(myMessage, myCipherKey, myAlphabet2)
