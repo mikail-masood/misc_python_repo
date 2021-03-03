@@ -65,6 +65,11 @@ def decryptMessage2(message, cipherKey, alphabet):
 # run this to encrypt/decrpt
 
 def runCaesarCipherProgram():
+    print(" ")
+    print("--------------------------------------------")
+    print("|   Welcome to the Caesar Cipher Program   |")
+    print("--------------------------------------------")
+    print(" ")
     myAlphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     myAlphabet2 = getDoubleAlphabet(myAlphabet)
     myMessage = ""
@@ -73,20 +78,20 @@ def runCaesarCipherProgram():
         option = chooseEncryptOrDecrypt()
         if option.lower() == "encrypt":
             myMessage = getMessage()
+            myCipherKey = getCipherKey()
+            myEncryptedMessage = encryptMessage(myMessage, myCipherKey, myAlphabet2)
+            print(f'Encrypted Message: {myEncryptedMessage}')
+            myDecryptedMessage = decryptMessage2(myEncryptedMessage, myCipherKey, myAlphabet2)
+            print(f'Decypted Message: {myDecryptedMessage}')
             exitLoop = True
         elif option.lower() == "decrypt":
             myMessage = getDecrypt()
+            myCipherKey = getCipherKey()
+            myDecryptedMessage = decryptMessage2(myMessage, myCipherKey, myAlphabet2)
+            print(f'Decrypted Message: {myDecryptedMessage}')
+            myEncryptedMessage = encryptMessage(myDecryptedMessage, myCipherKey, myAlphabet2)
+            print(f'Encypted Message: {myEncryptedMessage}')
             exitLoop = True
-    myCipherKey = getCipherKey()
-    if option.lower() == "encrypt":
-        myEncryptedMessage = encryptMessage(myMessage, myCipherKey, myAlphabet2)
-        print(f'Encrypted Message: {myEncryptedMessage}')
-        myDecryptedMessage = decryptMessage2(myEncryptedMessage, myCipherKey, myAlphabet2)
-        print(f'Decypted Message: {myDecryptedMessage}')
-    else:
-        myDecryptedMessage = decryptMessage2(myMessage, myCipherKey, myAlphabet2)
-        print(f'Decrypted Message: {myDecryptedMessage}')
-        myEncryptedMessage = encryptMessage(myDecryptedMessage, myCipherKey, myAlphabet2)
-        print(f'Encypted Message: {myEncryptedMessage}')
+        
 
-runCaesarCipherProgram()
+# runCaesarCipherProgram()
