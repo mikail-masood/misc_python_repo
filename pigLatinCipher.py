@@ -25,6 +25,11 @@ def convertFromPL(message):
 # main function
 
 def runPigLatinConverter():
+  print(" ")
+  print("-------------------------------------------")
+  print("|   Welcome to the Pig Latin Translator   |")
+  print("-------------------------------------------")
+  print(" ")
   option = input("Do you want to encrypt or decrypt pig latin? (enter encrypt or decrypt) ")
   if option.lower() == "encrypt":
     message = input("Enter word to be converted into pig latin: ")
@@ -38,4 +43,4 @@ def runPigLatinConverter():
     print('error try again')
 
 
-runPigLatinConverter()
+# runPigLatinConverter()
